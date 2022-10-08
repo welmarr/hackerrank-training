@@ -1,22 +1,7 @@
-#include <cmath>
-#include <cstdio>
 #include <vector>
 #include <iostream>
 #include <algorithm>
-#include <regex>
 using namespace std;
-
-string ltrim(const string &s) {
-    return regex_replace(s, regex("^\\s+"), string(""));
-}
-
-string rtrim(const string &s) {
-    return regex_replace(s, regex("\\s+$"), string(""));
-}
-
-string trim(const string &s) {
-    return ltrim(rtrim(s));
-}
 
 class Node {
     private:
@@ -101,9 +86,7 @@ class Queue{
             }else{
                 (*head).erase_front();
             }
-            
-            //cout << "Address head [" << head << " | " << end << "] temp [" << temp << "]" <<  endl;
-            
+                        
             delete (temp);  
             
             return true;
@@ -122,13 +105,11 @@ class Queue{
 };
 
 int main() {
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-    
+   
     int queries;
     cin >> queries;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     
-    //cout << "queries is " << queries << endl;
     
     Queue q;
     string query, x, type;
@@ -140,16 +121,13 @@ int main() {
         getline(cin, query);
         
         if (!query.empty()) {
-            //query =  trim(query);
             query_space = query.find(" ");
             
             if(query_space == string::npos){
                 type = query;
-                //cout << "Splitor [" << type << "]" << endl;
             }else {
                 type = query.substr(0, query_space);
                 x = query.substr(query_space + 1);
-                //cout << "Splitor [" << type << ", " << x << "]" << endl;
             }
             
             if(type == "3"){
@@ -160,9 +138,7 @@ int main() {
                 Node* node = new Node(x);
                 q.enquete(*node);
             }
-            //cout << "Querie " << query << (query.empty() ? " [is empty]" : " [is not empty]") << endl;
             queries--;
-            
             
         }
     }
